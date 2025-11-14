@@ -127,6 +127,7 @@ export type RootStackParamList = {
   Rewards: undefined;
 
   // Chat routes
+  Groups: undefined;
   ChatDetail: {
     contact: Contact;
   };
