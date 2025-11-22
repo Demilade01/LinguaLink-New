@@ -871,22 +871,37 @@ export default function App() {
   const navigationRef = useRef<NavigationContainerRef<any>>(null);
   const [navigationReady, setNavigationReady] = useState(false);
 
-  // Rely solely on React Navigation's linking prop; do not manually handle deep links here
-
   // Deep linking configuration
   const linking = {
     prefixes: ['exp://', 'exp+lingualink://', 'lingualink://'],
     config: {
       screens: {
+        // Auth stack screens (shown when not authenticated)
         Welcome: 'welcome',
         SignUp: 'signup',
         SignIn: 'signin',
         ForgotPassword: 'forgot-password',
         NewPassword: 'new-password',
         VerifyEmail: 'verify-email',
-        AuthCallback: 'auth-callback',
+        AuthCallback: {
+          path: 'auth-callback',
+          parse: {
+            code: (code: string) => code,
+            error: (error: string) => error,
+          },
+        },
+        // Main stack screens (shown when authenticated)
         InterestSelection: 'interests',
-        MainTabs: 'main',
+        MainTabs: {
+          path: 'main',
+          screens: {
+            Home: '',
+            Library: 'library',
+            Create: 'create',
+            Chat: 'chat',
+            Profile: 'profile',
+          },
+        },
         RecordVoice: 'record-voice',
         RecordVideo: 'record-video',
         TellStory: 'tell-story',
@@ -894,15 +909,83 @@ export default function App() {
         Settings: 'settings',
         Rewards: 'rewards',
         Groups: 'groups',
-        ChatDetail: 'chat/:id',
-        GroupChat: 'group/:id',
-        VoiceCall: 'call/voice/:id',
-        VideoCall: 'call/video/:id',
-        GroupCall: 'call/group/:id',
+        ChatDetail: {
+          path: 'chat/:id',
+          parse: {
+            id: (id: string) => id,
+          },
+        },
+        GroupChat: {
+          path: 'group/:id',
+          parse: {
+            id: (id: string) => id,
+          },
+        },
+        VoiceCall: {
+          path: 'call/voice/:id',
+          parse: {
+            id: (id: string) => id,
+          },
+        },
+        VideoCall: {
+          path: 'call/video/:id',
+          parse: {
+            id: (id: string) => id,
+          },
+        },
+        GroupCall: {
+          path: 'call/group/:id',
+          parse: {
+            id: (id: string) => id,
+          },
+        },
         TurnVerse: 'games/turnverse',
-        LiveStream: 'live/:roomId',
+        WordChain: 'games/wordchain',
+        StartLive: 'live/start',
+        LiveStream: {
+          path: 'live/:roomId',
+          parse: {
+            roomId: (roomId: string) => roomId,
+          },
+        },
+        LiveViewer: {
+          path: 'live/viewer/:roomId',
+          parse: {
+            roomId: (roomId: string) => roomId,
+          },
+        },
         ContactDiscovery: 'discover',
+        UserProfile: {
+          path: 'user/:userId',
+          parse: {
+            userId: (userId: string) => userId,
+          },
+        },
+        CreateStory: 'create-story',
+        StoryView: {
+          path: 'story/:storyId',
+          parse: {
+            storyId: (storyId: string) => storyId,
+          },
+        },
+        CreateGroup: 'create-group',
       },
+    },
+    // Enable async state resolution for conditional stacks
+    async getInitialURL() {
+      const url = await Linking.getInitialURL();
+      if (url != null) {
+        return url;
+      }
+    },
+    subscribe(listener: (url: string) => void) {
+      const onReceiveURL = ({ url }: { url: string }) => {
+        listener(url);
+      };
+      const subscription = Linking.addEventListener('url', onReceiveURL);
+      return () => {
+        subscription.remove();
+      };
     },
   };
 
