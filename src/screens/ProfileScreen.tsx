@@ -795,7 +795,7 @@ const ProfileScreen: React.FC<Props> = ({ navigation }) => {
               <View style={styles.badgeContent}>
                 <Text style={styles.badgeTitle}>Language Pioneer</Text>
                 <Text style={styles.badgeDescription}>
-                  Welcome to LinguaLink! Ready to preserve languages.
+                  Welcome to Lingualink AI! Ready to preserve languages.
                 </Text>
                 <Text style={styles.badgeDate}>Earned today</Text>
               </View>

@@ -621,7 +621,7 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
       <View style={[styles.header, { paddingTop: insets.top + height * 0.02 }]}>
         <View style={styles.headerContent}>
           <Ionicons name="mic" size={24} color="#FFFFFF" />
-          <Text style={styles.headerTitle}>LinguaLink</Text>
+          <Text style={styles.headerTitle}>Lingualink AI</Text>
           <TouchableOpacity>
             <Ionicons name="ellipsis-horizontal" size={24} color="#FFFFFF" />
           </TouchableOpacity>

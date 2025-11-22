@@ -715,7 +715,7 @@ const ChatListScreen: React.FC<any> = ({ navigation }) => {
           <View>
             <TouchableOpacity style={styles.findContactsButton}>
               <Ionicons name="search" size={20} color="#FF8A00" />
-              <Text style={styles.findContactsText}>Find Contacts on LinguaLink</Text>
+              <Text style={styles.findContactsText}>Find Contacts on Lingualink AI</Text>
             </TouchableOpacity>
             {filteredContacts.map(renderChatItem)}
           </View>

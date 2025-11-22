@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "LinguaLink",
+    "name": "Lingualink AI",
     "slug": "lingualink",
     "version": "1.0.0",
     "scheme": "lingualink",
@@ -68,13 +68,13 @@
       [
         "expo-audio",
         {
-          "microphonePermission": "Allow LinguaLink to access your microphone for voice recording."
+          "microphonePermission": "Allow Lingualink AI to access your microphone for voice recording."
         }
       ],
       [
         "expo-camera",
         {
-          "cameraPermission": "Allow LinguaLink to access your camera for video recording."
+          "cameraPermission": "Allow Lingualink AI to access your camera for video recording."
         }
       ],
       "expo-web-browser"

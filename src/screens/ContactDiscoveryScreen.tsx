@@ -133,11 +133,11 @@ const ContactDiscoveryScreen: React.FC<any> = ({ navigation }) => {
 
   const handleFollow = (userId: string, type: 'suggested' | 'influential') => {
     if (type === 'suggested') {
-      setSuggestedUsers(users => 
-        users.map(user => 
-          user.id === userId 
-            ? { 
-                ...user, 
+      setSuggestedUsers(users =>
+        users.map(user =>
+          user.id === userId
+            ? {
+                ...user,
                 isFollowing: !user.isFollowing,
                 followers: user.isFollowing ? user.followers - 1 : user.followers + 1
               }
@@ -145,11 +145,11 @@ const ContactDiscoveryScreen: React.FC<any> = ({ navigation }) => {
         )
       );
     } else {
-      setInfluentialUsers(users => 
-        users.map(user => 
-          user.id === userId 
-            ? { 
-                ...user, 
+      setInfluentialUsers(users =>
+        users.map(user =>
+          user.id === userId
+            ? {
+                ...user,
                 isFollowing: !user.isFollowing,
                 followers: user.isFollowing ? user.followers - 1 : user.followers + 1
               }
@@ -176,13 +176,13 @@ const ContactDiscoveryScreen: React.FC<any> = ({ navigation }) => {
   const syncContacts = () => {
     Alert.alert(
       'Sync Contacts',
-      'Allow LinguaLink to access your contacts to find friends who are already using the app?',
+      'Allow Lingualink AI to access your contacts to find friends who are already using the app?',
       [
         { text: 'Not Now', style: 'cancel' },
         {
           text: 'Allow',
           onPress: () => {
-            Alert.alert('Contacts Synced!', 'Found 12 friends on LinguaLink');
+            Alert.alert('Contacts Synced!', 'Found 12 friends on Lingualink AI');
           },
         },
       ]
@@ -192,7 +192,7 @@ const ContactDiscoveryScreen: React.FC<any> = ({ navigation }) => {
   const renderSuggestedUser = ({ item }: { item: SuggestedUser }) => (
     <View style={styles.userCard}>
       <View style={styles.userHeader}>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.userInfo}
           onPress={() => navigation.navigate('UserProfile', { user: item })}
         >
@@ -215,8 +215,8 @@ const ContactDiscoveryScreen: React.FC<any> = ({ navigation }) => {
             </View>
           </View>
         </TouchableOpacity>
-        
-        <TouchableOpacity 
+
+        <TouchableOpacity
           style={[
             styles.followButton,
             item.isFollowing && styles.followingButton
@@ -231,9 +231,9 @@ const ContactDiscoveryScreen: React.FC<any> = ({ navigation }) => {
           </Text>
         </TouchableOpacity>
       </View>
-      
+
       <Text style={styles.userBio}>{item.bio}</Text>
-      
+
       <View style={styles.userStats}>
         <View style={styles.statItem}>
           <Text style={styles.statNumber}>{item.posts}</Text>
@@ -254,7 +254,7 @@ const ContactDiscoveryScreen: React.FC<any> = ({ navigation }) => {
   const renderInfluentialUser = ({ item }: { item: InfluentialUser }) => (
     <View style={styles.influencerCard}>
       <View style={styles.influencerHeader}>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.userInfo}
           onPress={() => navigation.navigate('UserProfile', { user: item })}
         >
@@ -275,8 +275,8 @@ const ContactDiscoveryScreen: React.FC<any> = ({ navigation }) => {
             <Text style={styles.specialtyText}>{item.specialty}</Text>
           </View>
         </TouchableOpacity>
-        
-        <TouchableOpacity 
+
+        <TouchableOpacity
           style={[
             styles.followButton,
             item.isFollowing && styles.followingButton
@@ -291,7 +291,7 @@ const ContactDiscoveryScreen: React.FC<any> = ({ navigation }) => {
           </Text>
         </TouchableOpacity>
       </View>
-      
+
       <View style={styles.influencerStats}>
         <View style={styles.influencerStatItem}>
           <Text style={styles.influencerStatNumber}>
@@ -319,13 +319,13 @@ const ContactDiscoveryScreen: React.FC<any> = ({ navigation }) => {
         <Ionicons name="people" size={48} color="#FF8A00" />
         <Text style={styles.syncTitle}>Find Your Friends</Text>
         <Text style={styles.syncDescription}>
-          Sync your contacts to find friends who are already using LinguaLink
+          Sync your contacts to find friends who are already using Lingualink AI
         </Text>
         <TouchableOpacity style={styles.syncButton} onPress={syncContacts}>
           <Text style={styles.syncButtonText}>Sync Contacts</Text>
         </TouchableOpacity>
       </View>
-      
+
       <View style={styles.syncCard}>
         <Ionicons name="share-social" size={48} color="#10B981" />
         <Text style={styles.syncTitle}>Invite Friends</Text>
@@ -338,7 +338,7 @@ const ContactDiscoveryScreen: React.FC<any> = ({ navigation }) => {
           </Text>
         </TouchableOpacity>
       </View>
-      
+
       <View style={styles.syncCard}>
         <Ionicons name="scan" size={48} color="#8B5CF6" />
         <Text style={styles.syncTitle}>QR Code</Text>
@@ -357,7 +357,7 @@ const ContactDiscoveryScreen: React.FC<any> = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor="#FF8A00" />
-      
+
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -486,7 +486,7 @@ const ContactDiscoveryScreen: React.FC<any> = ({ navigation }) => {
                 <View style={styles.searchSuggestions}>
                   <Text style={styles.suggestionsTitle}>Popular searches:</Text>
                   {['Igbo', 'Yoruba', 'Hausa', 'teachers', 'storytellers'].map((suggestion) => (
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       key={suggestion}
                       style={styles.suggestionTag}
                       onPress={() => {

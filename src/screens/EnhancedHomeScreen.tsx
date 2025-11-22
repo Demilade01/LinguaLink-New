@@ -1460,7 +1460,7 @@ const EnhancedHomeScreen: React.FC<any> = ({ navigation }) => {
       {/* Header */}
       <View style={[styles.header, { paddingTop: insets.top + height * 0.01 }]}>
         <View style={styles.headerContent}>
-          <Text style={styles.headerTitle}>LinguaLink</Text>
+          <Text style={styles.headerTitle}>Lingualink AI</Text>
            <View style={styles.headerActions}>
             <TouchableOpacity>
               <Ionicons name="search" size={24} color="#FFFFFF" />

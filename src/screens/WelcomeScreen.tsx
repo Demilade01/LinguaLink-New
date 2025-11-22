@@ -47,7 +47,7 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
           </View>
 
           {/* Title */}
-          <Text style={styles.title}>LinguaLink</Text>
+          <Text style={styles.title}>Lingualink AI</Text>
 
           {/* Subtitle */}
           <Text style={styles.subtitle}>
